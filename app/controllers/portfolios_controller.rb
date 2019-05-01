@@ -24,8 +24,21 @@ class PortfoliosController < ApplicationController
       end   #  end respond_to do......   block
    end    #  end Portfolios create method
    
-end   # end class PortfoliosController definition
+
 
 def edit 
-  @portfolio_item = Portfolio.find(params[:id])   # :id is the record number in the database.
+  @portfolio_item = Portfolio.find(params[:id])
 end
+
+def update
+    @portfolio_item = Portfolio.find(params[:id])
+    respond_to do |format|
+      if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
+        format.html { redirect_to portfolios_path, notice:  'The record was successfully updated.' }        
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+  
+end   # end class PortfoliosController definition
