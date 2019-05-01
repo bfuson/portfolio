@@ -23,8 +23,11 @@ class PortfoliosController < ApplicationController
          end    #  end if...else...block
       end   #  end respond_to do......   block
    end    #  end Portfolios create method
-   
 
+def show
+   @portfolio_item = Portfolio.find(params[:id])
+   
+end
 
 def edit 
   @portfolio_item = Portfolio.find(params[:id])
@@ -34,7 +37,8 @@ def update
     @portfolio_item = Portfolio.find(params[:id])
     respond_to do |format|
       if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
-        format.html { redirect_to portfolios_path, notice:  'The record was successfully updated.' }        
+        format.html { redirect_to portfolios_path, notice:  'The record was successfully updated.' }       
+              # portfolios_path is the relative path.    portfolios_url  would be the entire path which could be sent as a link for access
       else
         format.html { render :edit }
       end
