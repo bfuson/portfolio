@@ -61,7 +61,7 @@ class BlogsController < ApplicationController
     @blog.destroy
     respond_to do |format|
       format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { head :no_content }   # json calls are inserted by the scaffold to support api calls, should you want them.
     end
   end
 

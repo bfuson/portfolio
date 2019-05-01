@@ -33,6 +33,23 @@ def edit
   @portfolio_item = Portfolio.find(params[:id])
 end
 
+def destroy    # does not have a template, so do not need to add a destroy.html.erb file to portfolios folder
+  # two options here:     destroy, delete
+  # delete()    executes the SQL delete verb, simply delete the db item, no checks, strictly within the db
+  # destroy()  checks other links / dependencies within the application, will not permit deletion if there are other dependencies
+
+    # do the look up
+    @portfolio_item = Portfolio.find(params[:id])   
+    
+    # destroy/delete the record
+    @portfolio_item.destroy
+    
+    # redirect 
+    respond_to do |format|
+      format.html { redirect_to portfolios_url, notice: 'Portfolio Record #{@portfolio_item.id} was successfully destroyed.' }
+    end
+end
+
 def update
     @portfolio_item = Portfolio.find(params[:id])
     respond_to do |format|
