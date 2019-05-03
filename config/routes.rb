@@ -4,7 +4,7 @@
 Rails.application.routes.draw do
   resources :portfolios
   
-  get 'about', to: 'pages#about'        #   this line replaces - 'pages/about'    both will work, 
+  get 'about-me', to: 'pages#about'        #   this line replaces - 'pages/about'    both will work, 
                                                         # with 'pages/about'  rails assumes that about is the method 
                                                         #  can change the presentation to    get 'about-me', to: 'pages#about'  and it will display
                                                          #  about even though localhost:3000/about-me   is used as the link.
