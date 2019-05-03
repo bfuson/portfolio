@@ -1,8 +1,12 @@
 #  NOTE - if change the routes.rb file, then must restart the rails server before running the changed code.
 
+# adding custom routes
 
 Rails.application.routes.draw do
-  resources :portfolios
+
+  resources :portfolios, except: [:show]   
+                          # option to move a route from the default to a custom one for resource portfolios
+  get 'portfolio/:id' , to: 'portfolios#show' , as: 'portfolio_show' 
   
   get 'about-me', to: 'pages#about'        #   this line replaces - 'pages/about'    both will work, 
                                                         # with 'pages/about'  rails assumes that about is the method 
