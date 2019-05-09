@@ -74,7 +74,7 @@ def toggle_status
        @blog.published! 
      else @blog.draft!  
    end
-  redirect_to blogs_url, notice: "Blog item -- #{@blog.title} -- status has been updated"
+  redirect_to blogs_url, notice: "Blog item -- #{@blog.title} -- status has been updated to:  #{@blog.status}"
 end
 
 
