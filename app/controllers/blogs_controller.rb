@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
    # commands that the set_blog method is called before anything else happens.  set_blog:only ....
    # means that only the set_blog method is run
    # this eliminates the need for duplicate code in each method to set_blog.
@@ -33,10 +33,8 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
-        format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,10 +45,8 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.update(blog_params)
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
-        format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,9 +57,21 @@ class BlogsController < ApplicationController
     @blog.destroy
     respond_to do |format|
       format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
-      format.json { head :no_content }   # json calls are inserted by the scaffold to support api calls, should you want them.
     end
   end
+
+
+def toggle_status
+    #   byebug      #  gem for debugging, allows to stop system and view variables
+    if @blog.draft?
+      @blog.published!
+    elsif @blog.published?
+      @blog.draft!
+    else
+      @blog.draft!   # trap the case where the status is neither published nor draft
+    end
+    redirect_to blogs_url, notice: "Post status has been updated"
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -14,7 +14,12 @@ Rails.application.routes.draw do
                                                               #  about even though localhost:3000/about-me   is used as the link.
   get 'contact', to: 'pages#contact'         # 'this line replaces - pages/contact'  
   
-  resources :blogs
+  resources :blogs do
+    member do
+      get :toggle_status 
+    end
+  end
                                                  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
 end
+ 
