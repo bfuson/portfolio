@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_202543) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.integer "status",  default: 0
+    t.integer "status",  default: 0  #  this default setting did not work.  Forced draft setting in the blog create method
     t.index ["slug"], name: "index_blogs_on_slug", unique: true
   end 
 
