@@ -11,5 +11,6 @@ class Portfolio < ApplicationRecord
   
         # another option is to use Ruby lamda
       #  scope  <reference name>, -> { where( <field name> <criteria>) }:
-     scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
+#     scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
+
 end
