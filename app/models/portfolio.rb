@@ -13,4 +13,10 @@ class Portfolio < ApplicationRecord
       #  scope  <reference name>, -> { where( <field name> <criteria>) }:
 #     scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
 
+    after_initialize :set_defaults  #  executed after an item's  new method is executed.
+    
+    def set_defaults
+      self.main_image ||= "http://via.placeholder.com/600x200/000FF/000000"
+      self.thumb_image ||= "http://via.placeholder.com/350x200/000000/FFFFFF"
+    end
 end
