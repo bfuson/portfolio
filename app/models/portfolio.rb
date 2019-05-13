@@ -17,6 +17,7 @@ class Portfolio < ApplicationRecord
     
     def set_defaults
       self.main_image ||= "http://via.placeholder.com/600x200/000FF/000000"
+              #  || is equivalent to saying that if main_image is "ni;" reset it to the following value
       self.thumb_image ||= "http://via.placeholder.com/350x200/000000/FFFFFF"
     end
-end
+end 
