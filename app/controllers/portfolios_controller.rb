@@ -1,8 +1,21 @@
 class PortfoliosController < ApplicationController
 
     def index
-      @portfolio_items = Portfolio.all
+     @portfolio_items = Portfolio.all         # bring back all portfolio items
+#      @portfolio_items = Portfolio.where(subtitle: 'Angular')   # bring back all Angular items
+#      @portfolio_items = Portfolio.where(subtitle: 'Ruby on Rails')   # bring back all Ruby on Rails items
+#      @portfolio_items = Portfolio.ruby_on_rails_portfolio_items      #  this uses the custom scope defined in portfolio.rb
+#      @portfolio_items = Portfolio.angular   #  this uses the custom scope defined in portfolio.rb
+      
     end  
+    
+    def angular
+      @angular_portfolio_items   = Portfolio.angular   #  list of angular portfolio items 
+    end
+    
+    def ruby_on_rails
+      @ruby_on_rails_portfolio_items = Portfolio.ruby_on_rails
+    end
     
     def new   # method to begin building a new portfolio item
       @portfolio_item = Portfolio.new      #  get the Portfolio information for display

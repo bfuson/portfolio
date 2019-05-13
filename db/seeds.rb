@@ -8,11 +8,17 @@
 
 # create 10 blog posts for test
 
+3.times do |topic|
+  Topic.create!( title: "Topic   #{topic}")
+end
+
+
 10.times do |blog|
   Blog.create!(
        title: "My Blog Post #{blog}",
-       body: "this is test text for the body of the blog entry for blog number: #{blog + 1}.  There will be many more to come........"
-  )
+       body: "this is test text for the body of the blog entry for blog number: #{blog + 1}.  There will be many more to come........",
+       topic_id: Topic.last.id,
+       status: 0)
 end
 
 puts "10 blog posts created"
@@ -26,15 +32,24 @@ end
 
 puts "5 skills created."
 
-9.times do |portfolio_item|
+8.times do |portfolio_item|
   Portfolio.create!(
   title: "Portfolio title: #{portfolio_item}",
-  subtitle: "My great service",
+  subtitle: "Ruby on Rails",
   body:  "more latin discussion.........",
   main_image: "http://via.placeholder.com/600x200/000FF/000000",
   thumb_image: "http://via.placeholder.com/350x200/000000/FFFFFF"
   )
 end
 
+1.times do |portfolio_item|
+  Portfolio.create!(
+  title: "Portfolio title: #{portfolio_item}", 
+  subtitle: "Angular",
+  body:  "more latin discussion.........",
+  main_image: "http://via.placeholder.com/600x200/000FF/000000",
+  thumb_image: "http://via.placeholder.com/350x200/000000/FFFFFF"
+  )
+end
 puts "9 portfolio items created"
 
