@@ -1,5 +1,10 @@
 class Portfolio < ApplicationRecord
   has_many :technologies
+  accepts_nested_attributes_for :technologies, 
+                                                    reject_if: lambda { |attrs|  attrs ['name'].blank?}
+                                  # this will allow entry of >1 technology when creating a new portfolio item
+                                  #  need to add any desired data validations such as ensuring the name attribute is not blank.
+                                  
   include Placeholder
   validates_presence_of :title, :body, :main_image, :thumb_image
   
@@ -11,9 +16,9 @@ class Portfolio < ApplicationRecord
      where(subtitle: 'Ruby on Rails') 
    end
   
-        # another option is to use Ruby lamda
+      #  another option is to use Ruby lamda
       #  scope  <reference name>, -> { where( <field name> <criteria>) }:
-#     scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
+      # scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
 
     after_initialize :set_defaults  #  executed after an item's  new method is executed.
     
