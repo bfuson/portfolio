@@ -19,10 +19,13 @@ class PortfoliosController < ApplicationController
     
     def new   # method to begin building a new portfolio item
       @portfolio_item = Portfolio.new      #  get the Portfolio information for display
+      3.times { @portfolio_item.technologies.build }  # builds 3 technologies for the item.
+                                                                                # this is not the desireable approach since it limits to only 3 
+                                                                                # want an approach where the number of additions is variable from 0 - n
     end
     
     def create
-    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))   
+    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name] ))   
                                   # this passes parameters, and specifies the permitted parms that can be passed to the app
         # POST /portfolio_item
         # POST /portfolio_item.json

@@ -4,6 +4,11 @@ class Portfolio < ApplicationRecord
                                                     reject_if: lambda { |attrs|  attrs ['name'].blank?}
                                   # this will allow entry of >1 technology when creating a new portfolio item
                                   #  need to add any desired data validations such as ensuring the name attribute is not blank.
+                                  # test the addition of multiple technologies using the rails console (rails c) with the following command:
+                                  #
+                                  # Portfolio.create!( title: "Web app", subtitle: "subtitle test", body: "subtitle test body text", technologies_attributes: [{name: "Ruby"}, {name: "Rails"}, {name: "Angular"}, {name: "Ionic"}])
+                                  #
+                                  # This actually adds four technoloiges to the single portfolio item
                                   
   include Placeholder
   validates_presence_of :title, :body, :main_image, :thumb_image
