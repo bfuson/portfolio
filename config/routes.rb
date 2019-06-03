@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :portfolios, except: [:show]   
                           # option to move a route from the default to a custom one for resource portfolios
   get 'portfolio/:id' , to: 'portfolios#show' , as: 'portfolio_show' 
+  get 'angular-portfolio-items', to: 'portfolios#angular'
+  get 'ROR-portfolio-items', to: 'portfolios#ruby_on_rails'
+  
+
   
   get 'about-me', to: 'pages#about'        #   this line replaces - 'pages/about'    both will work, 
                                                               # with 'pages/about'  rails assumes that about is the method 
