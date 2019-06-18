@@ -55,3 +55,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'friendly_id', '~> 5.2.4'           # Note: You MUST use 5.0.0 or greater for Rails 4.0+, 
                                                       # this is a later version than is used in the course.  They spec'd   5.1.0  
+gem 'devise', '~> 4.6', '>= 4.6.2'    # pulled in for authentication purposes
