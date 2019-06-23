@@ -4,7 +4,7 @@
 
 Rails.application.routes.draw do
 
-  devise_for :users   
+  devise_for :users, path: '', path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'register'}   
       # establishes routes for all registration needs 
       # created by command:     Bills-iMac:DevcampPortfolio williamfuson$ rails g devise:views
   resources :portfolios, except: [:show]   
