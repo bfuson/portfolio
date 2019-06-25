@@ -4,6 +4,9 @@
 
 Rails.application.routes.draw do
 
+  devise_for :users, path: '', path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'register'}   
+      # establishes routes for all registration needs 
+      # created by command:     Bills-iMac:DevcampPortfolio williamfuson$ rails g devise:views
   resources :portfolios, except: [:show]   
                           # option to move a route from the default to a custom one for resource portfolios
   get 'portfolio/:id' , to: 'portfolios#show' , as: 'portfolio_show' 
