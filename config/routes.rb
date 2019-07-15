@@ -9,8 +9,11 @@ Rails.application.routes.draw do
       # created by command:     Bills-iMac:DevcampPortfolio williamfuson$ rails g devise:views
   resources :portfolios, except: [:show]   
                           # option to move a route from the default to a custom one for resource portfolios
+  
   get 'portfolio/:id' , to: 'portfolios#show' , as: 'portfolio_show' 
+ 
   get 'angular-portfolio-items', to: 'portfolios#angular'
+  
   get 'ROR-portfolio-items', to: 'portfolios#ruby_on_rails'
   
 
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
                                                               # with 'pages/about'  rails assumes that about is the method 
                                                               #  can change the presentation to    get 'about-me', to: 'pages#about'  and it will display
                                                               #  about even though localhost:3000/about-me   is used as the link.
+  
   get 'contact', to: 'pages#contact'         # 'this line replaces - pages/contact'  
   
   resources :blogs do

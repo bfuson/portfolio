@@ -1,3 +1,4 @@
+
  <h1>  Show Portfolio Item </h1>
 
 <%= @portfolio_item.inspect %>
@@ -14,4 +15,16 @@
 <% @portfolio_item.technologies.each do |tech| %>
 <p> <%= tech.name %></p>
 <% end %>
+
+<hr>
+<h3> Parameters Inspection </h3>
+<%= params.inspect%>
+
+<h3>Item DB Id:</h3>  
+<%= params[:id] %>
+
+<h3>Requested action</h3>  
+<%= params[:action] %>
+
+<hr>
 
