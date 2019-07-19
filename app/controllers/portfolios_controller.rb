@@ -20,12 +20,12 @@ class PortfoliosController < ApplicationController
     def new   # method to begin building a new portfolio item
       @portfolio_item = Portfolio.new      #  get the Portfolio information for display
       3.times { @portfolio_item.technologies.build }  # builds 3 technologies for the item.
-                                                                                # this is not the desireable approach since it limits to only 3 
-                                                                                # want an approach where the number of additions is variable from 0 - n
+                                                      # this is not the desireable approach since it limits to only 3 
+                                                      # want an approach where the number of additions is variable from 0 - n
     end
     
     def create
-    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name] ))   
+    @portfolio_item = Portfolio.new(portfolio_params)   
                                   # this passes parameters, and specifies the permitted parms that can be passed to the app
         # POST /portfolio_item
         # POST /portfolio_item.json
@@ -69,7 +69,7 @@ end
 def update
     @portfolio_item = Portfolio.find(params[:id])
     respond_to do |format|
-      if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
+      if @portfolio_item.update(portfolio_params)
         format.html { redirect_to portfolios_path, notice:  'The record was successfully updated.' }       
               # portfolios_path is the relative path.    portfolios_url  would be the entire path which could be sent as a link for access
       else
@@ -77,5 +77,18 @@ def update
       end
     end
   end
+  
+  
+  private
+       #  reminder - private means that the methods from this point on are only visible to methods within this class
+       #  they cannot be accessed by other classes.
+       
+    def portfolio_params
+      params.require(:portfolio).permit(:title, 
+                                        :subtitle, 
+                                        :body, 
+                                         technologies_attributes: [:name]
+                                         )
+    end
   
 end   # end class PortfoliosController definition
