@@ -1,13 +1,35 @@
 class ApplicationController < ActionController::Base
    protect_from_forgery with:  :exception   
                                       # not in the generated Controller, so added as in the class work
-   before_action :configure_permitted_parameters, if: :devise_controller?
-              #   before_action was before_filter ,  newer version of RAILS has apparently deprecated before_filter.
-              # :configure_permitted_parameters   -   created just for the devcamp class, only available if defined in the application
-              #  if:  :devise_controller?   -  means that this will be used only if active comm's with the devise controller
+   
+  include DeviseWhitelist   
+  include SetSource
+  include CurrentUserConcern        #  ensure there is no conflict with another module
+
+   
    def configure_permitted_parameters
      # these are specific to Rails 5
      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
      devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+   end
+   
+   def current_user   
+     super || guest_user 
+      # overwrites the standard current_user method copied from the devise gem
+      # if there is a current legit user signed in - then use the current_user method exactly as the gem is coded.
+      # memics 
+    
+   end
+   
+   def guest_user
+      OpenStruct.new(name: "Guest User", 
+               first_name: "Guest", 
+               last_name: "User", 
+               email: "guest_user@test.com"
+               )  
+      #  The purpose here is to, provide data to mimic a user definition
+      #  when need to determine if the user is real or a guest - check class type.  
+      #  name.is_a?(OpenStruct)  == or ==
+      #  name.class
    end
 end
