@@ -9,12 +9,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
      
-     
    validates_presence_of :name
       # security protection to ensure a name field / value is present
           
+   
+          
    def first_name
      # extract first name from the name field
+     if self.name == nil
+          # protect against an entry that did provided valid user id, but did not insert a name
+       self.name = "Default User"
+     end
      self.name.split.first    
         # split the name field into an array of values separated by spaces or specified argument such as a comma
         # returns the first element of the array
