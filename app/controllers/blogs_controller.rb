@@ -9,18 +9,23 @@ class BlogsController < ApplicationController
   # GET /blogs.json
   def index
     @blogs = Blog.all    # could change this to     @blogs = Blog.limit(1)   to limit the app to just one blog.
+    @page_title = "My Portfolio Blog"    # reset the page title as appropriate for Blogs site.
+                                          #  used in the applicatoin.html.erb layout code
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+     @page_title = @blog.title
+         # this works because of the before_action method that calls set_blog to retrieve the actual blog title
+     @seo_keywords = @blog.body
   end
 
   # GET /blogs/new
   def new      # this creates a new instance, but does not take in any data, it has no parameters
     @blog = Blog.new    
   end
-
+ 
   # GET /blogs/1/edit
   def edit
   end

@@ -5,13 +5,15 @@ class ApplicationController < ActionController::Base
   include DeviseWhitelist   
   include SetSource
   include CurrentUserConcern        #  ensure there is no conflict with another module
-
-   
+  include DefaultPageContent
+  
+#  before_action :set_title
+    
    def configure_permitted_parameters
      # these are specific to Rails 5
      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
      devise_parameter_sanitizer.permit(:account_update, keys: [:name])
    end
-   
+ 
 end
 
