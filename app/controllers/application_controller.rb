@@ -13,14 +13,4 @@ class ApplicationController < ActionController::Base
      devise_parameter_sanitizer.permit(:account_update, keys: [:name])
    end
    
-   def current_user   
-     super || guest_user
-      # if super is true it means that there is a current user defined. 
-      # overwrites the standard current_user method copied from the devise gem
-      # if there is a current legit user signed in - then use the current_user method exactly as the gem is coded.
-      # memics 
-      # if there is now current user defined, the CurrentUserConcern module will be called to provide a guest user
-   
-   end
-   
 end
