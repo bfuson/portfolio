@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
      devise_parameter_sanitizer.permit(:account_update, keys: [:name])
    end
    
+   def current_user
+     super || guest_user
+      # overwrites the standard current_user method copied from the devise gem
+      # use the current_user method exactly as the bem is coded if there is a current user signed in
+   end
 end
+
