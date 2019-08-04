@@ -1,20 +1,27 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
-   # commands that the set_blog method is called before anything else happens.  set_blog:only ....
-   # means that only the set_blog method is run
-   # this eliminates the need for duplicate code in each method to set_blog.
-   # note that the set_blog method is a private method created towards the end of this file.
-
-  # GET /blogs
-  # GET /blogs.json
+      # commands that the set_blog method is called before anything else happens.  set_blog:only ....
+      # means that only the set_blog method is run
+      # this eliminates the need for duplicate code in each method to set_blog.
+      # note that the set_blog method is a private method created towards the end of this file.
+      
+  layout "blog"
+      # specifies the layout file to use for blogs.  "app/views/layouts/blog.html.erb"
+      # since  -  layout - is just a Ruby method with the argument "blog" could also use
+      #  layout("blog")   but the convention is    layout "blog"
+  
+     # GET /blogs
+     # GET /blogs.json
+     
   def index
     @blogs = Blog.all    # could change this to     @blogs = Blog.limit(1)   to limit the app to just one blog.
     @page_title = "My Portfolio Blog"    # reset the page title as appropriate for Blogs site.
                                           #  used in the applicatoin.html.erb layout code
   end
 
-  # GET /blogs/1
-  # GET /blogs/1.json
+     # GET /blogs/1
+     # GET /blogs/1.json
+     
   def show
      @page_title = @blog.title
          # this works because of the before_action method that calls set_blog to retrieve the actual blog title

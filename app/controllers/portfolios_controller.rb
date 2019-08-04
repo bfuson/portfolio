@@ -1,5 +1,5 @@
 class PortfoliosController < ApplicationController
-
+  layout 'portfolio'
     def index
      @portfolio_items = Portfolio.all         # bring back all portfolio items
 #      @portfolio_items = Portfolio.where(subtitle: 'Angular')   # bring back all Angular items
