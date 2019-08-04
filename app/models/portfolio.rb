@@ -1,7 +1,7 @@
 class Portfolio < ApplicationRecord
   has_many :technologies
   accepts_nested_attributes_for :technologies, 
-                                                    reject_if: lambda { |attrs|  attrs ['name'].blank?}
+  reject_if: lambda { |attrs|  attrs ['name'].blank?}
                                   # this will allow entry of >1 technology when creating a new portfolio item
                                   #  need to add any desired data validations such as ensuring the name attribute is not blank.
                                   # test the addition of multiple technologies using the rails console (rails c) with the following command:
