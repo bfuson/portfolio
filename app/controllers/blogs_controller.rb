@@ -14,8 +14,11 @@ class BlogsController < ApplicationController
      # GET /blogs.json
      
   def index
-    @blogs = Blog.all    # could change this to     @blogs = Blog.limit(1)   to limit the app to just one blog.
-    @page_title = "My Portfolio Blog"    # reset the page title as appropriate for Blogs site.
+            # @blogs = Blog.all    # could change this to     @blogs = Blog.limit(1)   
+            # to limit the app to just one blog.
+    @blogs = Blog.special_blogs     # will define how many blog entries to process
+    byebug          # debugging tool provided in rails 5 and above - in the Gemfile file
+    @page_title = "My Portfolio Blog"     # reset the page title as appropriate for Blogs site.
                                           #  used in the applicatoin.html.erb layout code
   end
 

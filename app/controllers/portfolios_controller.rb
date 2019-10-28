@@ -1,7 +1,13 @@
 class PortfoliosController < ApplicationController
+  before_action :set_portfolio_item, only: [:edit, :update, :show, :destroy]
+    # do this so that can refactor to remove duplicate code below in each of the methods specified in the before_action line
+    # edit, destroy, update, show 
+    # note that the :set_portfolio_item  method is specified in the private section.
+  
   layout 'portfolio'
     def index
      @portfolio_items = Portfolio.all         # bring back all portfolio items
+#         ALTERNATIVE CODE OPTIONS NOT USED IN THIS COURSE.
 #      @portfolio_items = Portfolio.where(subtitle: 'Angular')   # bring back all Angular items
 #      @portfolio_items = Portfolio.where(subtitle: 'Ruby on Rails')   # bring back all Ruby on Rails items
 #      @portfolio_items = Portfolio.ruby_on_rails_portfolio_items      #  this uses the custom scope defined in portfolio.rb
@@ -41,23 +47,23 @@ class PortfoliosController < ApplicationController
    end    #  end Portfolios create method
 
 def show
-   @portfolio_item = Portfolio.find(params[:id])
-   
+      # specific record to show was identified in the before action ":set_portfolio_item"
+      # which calls the private method set_portfolio_item
 end
 
 def edit 
-  @portfolio_item = Portfolio.find(params[:id])
+      # specific record to edit was identified in the before action ":set_portfolio_item"
+      # which calls the private method set_portfolio_item
 end
 
 def destroy    # does not have a template, so do not need to add a destroy.html.erb file to portfolios folder
   # two options here:     destroy, delete
   # delete()    executes the SQL delete verb, simply delete the db item, no checks, strictly within the db
   # destroy()  checks other links / dependencies within the application, will not permit deletion if there are other dependencies
-
-    # do the look up
-    @portfolio_item = Portfolio.find(params[:id])   
-    
-    # destroy/delete the record
+  # specific record to destroy was identified in the before action ":set_portfolio_item"
+  # which calls the private method set_portfolio_item
+  
+  # destroy/delete the record
     @portfolio_item.destroy
     
     # redirect 
@@ -67,7 +73,9 @@ def destroy    # does not have a template, so do not need to add a destroy.html.
 end
 
 def update
-    @portfolio_item = Portfolio.find(params[:id])
+    # specific record to update was identified in the before action ":set_portfolio_item"
+    # which calls the private method set_portfolio_item
+    
     respond_to do |format|
       if @portfolio_item.update(portfolio_params)
         format.html { redirect_to portfolios_path, notice:  'The record was successfully updated.' }       
@@ -77,7 +85,6 @@ def update
       end
     end
   end
-  
   
   private
        #  reminder - private means that the methods from this point on are only visible to methods within this class
@@ -90,5 +97,9 @@ def update
                                          technologies_attributes: [:name]
                                          )
     end
-  
+    
+   def set_portfolio_item
+    @portfolio_item = Portfolio.find(params[:id])
+   end  
+
 end   # end class PortfoliosController definition
