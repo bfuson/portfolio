@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'jquery-rails'  # added to support the bootstrap addition.
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -57,3 +59,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'friendly_id', '~> 5.2.4'           # Note: You MUST use 5.0.0 or greater for Rails 4.0+, 
                                                       # this is a later version than is used in the course.  They spec'd   5.1.0  
 gem 'devise', '~> 4.6', '>= 4.6.2'    # pulled in for authentication purposes
+
+gem 'bootstrap', '~> 4.3.1'
