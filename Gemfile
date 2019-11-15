@@ -63,3 +63,10 @@ gem 'devise', '~> 4.6', '>= 4.6.2'    # pulled in for authentication purposes
 gem 'bootstrap', '~> 4.3.1'
 
 gem 'devcamp_view_tool', git: 'https://github.com/bfuson/devcamp_view_tool'
+  # the use of git: '......'  shows that the gem is only on github, it has not been registered to rubygems.org.  It is private
+  # this overrides the public rubygems site.
+  # if "devcamp_view_tool" had been published to rubygems.org the code would be
+  #    gem 'devcamp_view_tool', '~> 0.1.0'     where 0.1.0 is the desired version number.  the ~ means approximately.
+  #  use >= 0.1.0 to mean any version >= 0.1.0.
+  #  spec to only use the specified version with =0.1.0
+   
