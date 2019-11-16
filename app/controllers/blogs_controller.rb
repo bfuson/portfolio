@@ -6,9 +6,17 @@ class BlogsController < ApplicationController
       # note that the set_blog method is a private method created towards the end of this file.
       
   layout "blog"
+  
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
+      # this adds role action specifications to be used by petergate gem for authorizations
+      #  all users will be able to show and index blog entries
+      #  users cannot do :destroy, :new, :create, :update, :edit
+      # site_admin can do everything
+  
       # specifies the layout file to use for blogs.  "app/views/layouts/blog.html.erb"
       # since  -  layout - is just a Ruby method with the argument "blog" could also use
       #  layout("blog")   but the convention is    layout "blog"
+
   
      # GET /blogs
      # GET /blogs.json

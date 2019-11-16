@@ -14,10 +14,21 @@ module CurrentUserConcern
    end
    
    def guest_user
-     OpenStruct.new(name: "Guest User", 
-                    first_name: "Guest",
-                    last_name: "User", 
-                    email: "guest_user@test.com"
-                    )
-   end
+     #  OpenStruct.new(name: "Guest User", 
+     #                 first_name: "Guest",
+     #                 last_name: "User", 
+     #                 email: "guest_user@test.com"
+     #                 )
+        # this OpenStruct code mimics the data of a user.  But does not fit the bill for petergate 
+        # authorization and methods for ActiveRecord and petergate.  So later in the course this code
+        # is replaced with the following.
+        # created a new guest_user.rb file in the models folder
+        
+     guest = GuestUser.new
+     guest.name = "Guest User"
+     guest.first_name = "Guest"
+     guest.last_name = "User"
+     guest.email = "guest@example.com"
+     guest  # this ensures that the entire object "guest" is returned.
+   end   
 end 
