@@ -41,7 +41,7 @@ gem 'jquery-rails'  # added to support the bootstrap addition.
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry-byebug'
+  gem 'pry-byebug' 
 end
 
 group :development do
@@ -70,3 +70,4 @@ gem 'devcamp_view_tool', git: 'https://github.com/bfuson/devcamp_view_tool'
   #  use >= 0.1.0 to mean any version >= 0.1.0.
   #  spec to only use the specified version with =0.1.0
    
+gem 'petergate', '~> 2.0', '>= 2.0.1'
