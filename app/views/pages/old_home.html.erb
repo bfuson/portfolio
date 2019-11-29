@@ -1,0 +1,27 @@
+<h1>Hi,  <%= current_user.first_name %> <%= current_user.last_name %> </h1>
+
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<h1>Blog Posts</h1>
+<%= @posts.inspect %>
+
+<h1>Skills</h1>
+<%= @skills.inspect %>
+
+<h2>User class:</h2>
+<p>User class:  <%= current_user.class %></p>
+
+<hr>
+<%= sample_helper %>
+
+<%= content_tag :p, class: "my-special-class"  do%>
+Hi, I'm in a paragraph tag.
+<% end %>
+
+<p class="My-special-class">Hi, I'm in a paragraph tag - direct approach.</p>
+
+<%= content_tag :h1, class: "my-special-class"  do%>
+Hi, I'm in a paragraph tag.
+<% end %>
+
+<p class="My-special-class">Hi, I'm in a paragraph tag - direct approach with a heading.</p> 

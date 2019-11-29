@@ -29,7 +29,7 @@ class PortfoliosController < ApplicationController
       @portfolio_item = Portfolio.new      #  get the Portfolio information for display
       3.times { @portfolio_item.technologies.build }  # builds 3 technologies for the item.
                                                       # this is not the desireable approach since it limits to only 3 
-                                                       # want an approach where the number of additions is variable from 0 - n
+                                                      # want an approach where the number of additions is variable from 0 - n
     end
     
     def create
