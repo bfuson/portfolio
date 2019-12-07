@@ -41,14 +41,14 @@ body {
 }
 
 .cover-container {
-  max-width: 42em;
+  max-width: 60rem; /* was 60em */
 }
 
 
 /*
  * Header
  */
-.masthead {
+.masthead { 
   margin-bottom: 2rem;
 }
 
@@ -70,7 +70,7 @@ body {
 }
 
 .nav-masthead .nav-link + .nav-link {
-  margin-left: 1rem;
+  margin-left: 5rem;   /*  changed, the generated value was 1  */
 }
 
 .nav-masthead .active {
@@ -78,12 +78,14 @@ body {
   border-bottom-color: #fff;
 }
 
-@media (min-width: 48em) {
+
+@media (min-width: 40rem) {  
   .masthead-brand {
-    float: left;
+    fixed: center;   /* was float: left  */
+    
   }
   .nav-masthead {
-    float: right;
+    fixed: center;   /* was float: right  */
   }
 }
 

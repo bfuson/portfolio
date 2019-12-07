@@ -7,17 +7,16 @@ module ApplicationHelper
           #  <p>My helper</p>
   end
   
-  def login_helper
+  def login_helper style    # another way to pass parameters to the method.
     if current_user.is_a?(GuestUser)
-       (link_to "Register", new_user_registration_path) +
-       "<br>".html_safe + 
-       (link_to "Login", new_user_session_path)    # give the guest user the registration option
+       (link_to "Register", new_user_registration_path, class: style) + " ".html_safe + 
+       (link_to "Login", new_user_session_path, class: style)    # give the guest user the registration option
     else
-       link_to "Logout", destroy_user_session_path, method: :delete
+       link_to "Logout", destroy_user_session_path, method: :delete, class: style
     end
   end
   
-  def source_helper(layout_name)
+  def source_helper(layout_name)    # another way to pass parameters to the method.
     if session[:source]
        greeting = "Thanks for visiting me from #{session[:source]} and you are on the #{layout_name} layout"
        content_tag(:p, greeting, class: "source-greeting")
