@@ -30,6 +30,7 @@ html,
 body {
   height: 100%;
   background-color: #333;
+  
 }
 
 body {
@@ -38,10 +39,12 @@ body {
   color: #fff;
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+
 }
 
 .cover-container {
   max-width: 60rem; /* was 60em */
+ 
 }
 
 
@@ -107,4 +110,59 @@ body {
  */
 .mastfoot {
   color: rgba(255, 255, 255, .5);
+}
+
+/*
+ * Affix and center  --  this was not in the generated application scss file
+ * but was in the course version - so added it manually - 10 Dec 2019
+ */
+
+
+@media (min-width: 40em) {
+  /* Pull out the header and footer */
+ .masthead {
+   position: fixed;
+   top: 0;
+ }
+ .mastfoot {
+   position: fixed;
+   bottom: 0;
+ }
+ /* Start the vertical centering */
+.site-wrapper-inner{
+  vertical-align: middle;
+ }
+ /* Handle the widths */
+.masthead,
+.mastfoot,
+.cover-container {
+  width: 100%;   /* Must be percentage or pixels for horizontal alignment */
+ }
+}
+
+@media (min-width: 62em) {
+  .masthead,
+  .mastfoot,
+  .cover-container{
+    width: 55rem;
+  }
+}
+
+
+/*
+ * Custom Styles  -  added as part of course to override the default settings
+ */
+
+.card-body { 
+  color: black;
+  text-align: left;
+}
+
+.auth-links a {
+  color: black;
+  /*
+   * the addition of "a" to the auth-links method has this apply to all "a" tags / links
+   * before the "a" was added, the color specification did not take.
+   * 
+   */
 }
