@@ -160,9 +160,13 @@ body {
 
 .auth-links a {
   color: black;
-  /*
+  /* 
    * the addition of "a" to the auth-links method has this apply to all "a" tags / links
    * before the "a" was added, the color specification did not take.
    * 
    */
+}
+
+.register-text {
+  text-align: right;
 }
