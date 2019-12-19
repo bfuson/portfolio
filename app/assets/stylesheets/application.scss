@@ -139,7 +139,7 @@ body {
   width: 100%;   /* Must be percentage or pixels for horizontal alignment */
  }
 }
-
+ 
 @media (min-width: 62em) {
   .masthead,
   .mastfoot,
@@ -169,4 +169,12 @@ body {
 
 .register-text {
   text-align: right;
+}
+
+.login > .card {
+  width: 22rem;
+  margin: 0 auto;
+  float: none;
+  color: black;
+  
 }
