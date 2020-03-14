@@ -8,7 +8,7 @@ module ApplicationHelper
   end
   
   def login_helper style = ''   # another way to pass parameters to the method.
-                                # empty string argument => 
+                                # empty string argument => allows the app to set individual styles at execution time
     if current_user.is_a?(GuestUser)
        (link_to "Register", new_user_registration_path, class: style) + " ".html_safe + 
        (link_to "Login", new_user_session_path, class: style)    # give the guest user the registration option
@@ -29,4 +29,3 @@ module ApplicationHelper
   end
   
 end
-  
