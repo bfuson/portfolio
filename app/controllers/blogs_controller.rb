@@ -7,7 +7,7 @@ class BlogsController < ApplicationController
       
   layout "blog"
   
-  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit, :toggle_status]}, site_admin: :all
       # this adds role action specifications to be used by petergate gem for authorizations
       #  all users will be able to show and index blog entries
       #  users cannot do :destroy, :new, :create, :update, :edit
