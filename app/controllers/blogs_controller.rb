@@ -58,7 +58,7 @@ class BlogsController < ApplicationController
   # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)   # this passes parameters, 
-    @blog.draft!      # attempt to force status to draft for newly created blogs
+    @blog.draft!          # attempt to force status to draft for newly created blogs
                               # this fixes the issue.  New blog items are now set to draft 
                               # still not clear why the default setting failed.
     respond_to do |format|
