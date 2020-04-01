@@ -19,9 +19,10 @@
   <div class="form-group">
     <%= f.label :body %>
     <%= f.text_area :body, class: 'form-control', rows: 10 %>
+    	<!-- use the rows: <int> to size the text area box.  It is scrollable. -->
   </div>
 
   <div class="form-group">
-    <%= f.submit "Submit",, class: 'btn btn-primary' %>
+    <%= f.submit "Submit", class: 'btn btn-primary' %>
   </div>
 <% end %>

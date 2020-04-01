@@ -26,12 +26,10 @@ class BlogsController < ApplicationController
             # could change this to     @blogs = Blog.limit(1)   
             # to limit the app to just one blog.
             # binding.pry      # set break point         
-    @blogs = Blog.special_blogs     # will define how many blog entries to process
-            # binding.pry      # set break point  
-            # @blogs = Blog.featured_blogs    # this line of code was only to help demo debugging.
-             # binding.pry      # set break point
-             #  byebug          
-             # debugging tool provided in rails 5 and above - in the Gemfile file
+    @blogs = Blog.page(params[:page]).per(5)     
+            # set to use Kaminari gem for pagination, 5 items per page
+            # will define how many blog entries to process
+            
     @page_title = "My Portfolio Blog"     # reset the page title as appropriate for Blogs site.
                                           #  used in the applicatoin.html.erb layout code
   end
