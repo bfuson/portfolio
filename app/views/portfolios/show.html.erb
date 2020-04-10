@@ -1,11 +1,12 @@
 <div class="container">
+		<!-- use the container class to define a display area -->
 	<div class="row">
 		<div class="col-md-7">
 			<p><%= image_tag @portfolio_item.main_image %></p>
 		</div>
 		
 		<div class="col-md-5">  
-			<!-- remember that within the row, the col-md values must add to 12 -->
+			<!-- remember that within the row, the col-md values must add to 12 when using Bootstrap grids -->
 			<h1><%= @portfolio_item.title %></h1>
 			<hr>
 			<em><%= @portfolio_item.subtitle %></em>
@@ -17,6 +18,7 @@
 			<% @portfolio_item.technologies.each do |tech| %>
 			<p> <%= tech.name %></p>	
 			<% end %>
+			
 		</div>
 	</div>
 </div>

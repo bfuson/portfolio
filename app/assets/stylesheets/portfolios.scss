@@ -6,12 +6,13 @@
 
 .navbar {
   margin-bottom: 0;
+  
 }
 
 .jumbotron {
   padding-top: 6rem;
   padding-bottom: 6rem;
-  margin-bottom: 0;
+  margin-bottom: 3rem; /* this was 0rem, but was too close to body, so put in some spacing. */
   background-color: #fff;
 }
 @media (min-width: 768px) {
@@ -70,7 +71,7 @@ footer p {
 
 body {
   background-color: tan;
-  color: white;
+  color: grey;
 }
 
 /* test - comment out this  don't know what it is supposed to do..
