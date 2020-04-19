@@ -1,6 +1,7 @@
 <div class="container">
 		<!-- use the container class to define a display area -->
 	<div class="row">
+			<!-- break display page into two columns -->
 		<div class="col-md-7">
 			<p><%= image_tag @portfolio_item.main_image %></p>
 		</div>
@@ -12,34 +13,11 @@
 			<em><%= @portfolio_item.subtitle %></em>
 			
 			<p><%= @portfolio_item.body %></p>
-			
 			<h3>Technologies Used:</h3>
 			<hr>
 			<% @portfolio_item.technologies.each do |tech| %>
-			<p> <%= tech.name %></p>	
-			<% end %>
-			
+				<p> <%= tech.name %></p>	
+			<% end %>		
 		</div>
 	</div>
 </div>
-
-<!--  debugging print-outs below 
- <h1>  Show Portfolio Item </h1>
-
-<%= @portfolio_item.inspect %>
-
-<hr>
-<h3> Parameters Inspection </h3>
-<%= params.inspect%>
-
-<h3>Item DB Id:</h3>  
-<%= params[:id] %>
-
-<h3>Requested action</h3>  
-<%= params[:action] %>
-
-<h3>By User:</h3>
-<%= current_user.first_name %>  <%= current_user.last_name %>
-
-<hr>
--->

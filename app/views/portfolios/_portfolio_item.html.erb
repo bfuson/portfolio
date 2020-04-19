@@ -1,7 +1,7 @@
 <div class="card">
 	<%=  image_tag portfolio_item.thumb_image unless portfolio_item.thumb_image.nil? %>
 	<p class="card-text">
-		<span><%= link_to portfolio_item.title, portfolio_show_path(portfolio_item.id) %></span>
+		<span><%= link_to portfolio_item.title, portfolio_show_path(portfolio_item) %></span>
 			<!-- use the span here anticipating separate formatting for the title and id -->
 		<%= portfolio_item.subtitle %>
 	</p>

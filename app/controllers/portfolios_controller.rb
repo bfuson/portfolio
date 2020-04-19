@@ -25,22 +25,27 @@ class PortfoliosController < ApplicationController
       @ruby_on_rails_portfolio_items = Portfolio.ruby_on_rails
     end
     
-    def new   # method to begin building a new portfolio item
+    def new       # only active for admin user 
+                  # method to begin building a new portfolio item
       @portfolio_item = Portfolio.new      #  get the Portfolio information for display
       3.times { @portfolio_item.technologies.build }  # builds 3 technologies for the item.
-                                                      # this is not the desireable approach since it limits to only 3 
-                                                      # want an approach where the number of additions is variable from 0 - n
+                                                      # this is not the desireable approach since 
+                                                      # it limits to only 3 
+                                                      # want an approach where the number of 
+                                                      # additions is variable from 0 - n
     end
     
     def create
     @portfolio_item = Portfolio.new(portfolio_params)   
-                                  # this passes parameters, and specifies the permitted parms that can be passed to the app
+        # this passes parameters, and specifies the permitted parms that can be passed to the app
         # POST /portfolio_item
         # POST /portfolio_item.json
        respond_to do |format|
          if @portfolio_item.save
-           format.html { redirect_to portfolios_path, notice: 'Your Portfolio item is now live.' }  #  adds to the full list of portfolio_items, not the show page
-           format.json { render :show, status: :created, location: @portfolio_item }   # displays on the show page?
+           format.html { redirect_to portfolios_path, notice: 'Your Portfolio item is now live.' }  
+                        #  adds to the full list of portfolio_items, not the show page
+           format.json { render :show, status: :created, location: @portfolio_item }   
+                        # displays on the show page?
          else
            format.html { render :new }
            format.json { render json: @portfolio_item.errors, status: :unprocessable_entity }
