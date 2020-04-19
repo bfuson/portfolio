@@ -8,12 +8,19 @@ class PortfoliosController < ApplicationController
   access all: [:show, :index, :angular], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
    
     def index
-     @portfolio_items = Portfolio.all         # bring back all portfolio items
-#         ALTERNATIVE CODE OPTIONS NOT USED IN THIS COURSE.
-#      @portfolio_items = Portfolio.where(subtitle: 'Angular')   # bring back all Angular items
-#      @portfolio_items = Portfolio.where(subtitle: 'Ruby on Rails')   # bring back all Ruby on Rails items
-#      @portfolio_items = Portfolio.ruby_on_rails_portfolio_items      #  this uses the custom scope defined in portfolio.rb
-#      @portfolio_items = Portfolio.angular   #  this uses the custom scope defined in portfolio.rb
+     @portfolio_items = Portfolio.by_position 
+         #  this will look for the position value in the portfolio database record to order accordingly
+         # ALTERNATIVE CODE OPTIONS NOT USED IN THIS COURSE.
+         #  @portfolio_items = Portfolio.all   
+               # bring back all portfolio items
+         #  @portfolio_items = Portfolio.where(subtitle: 'Angular')   
+               # bring back all Angular items
+         #  @portfolio_items = Portfolio.where(subtitle: 'Ruby on Rails')   
+               # bring back all Ruby on Rails items
+         #  @portfolio_items = Portfolio.ruby_on_rails_portfolio_items      
+               #  this uses the custom scope defined in portfolio.rb
+         #  @portfolio_items = Portfolio.angular   
+               #  this uses the custom scope defined in portfolio.rb
       
     end  
     
