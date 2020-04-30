@@ -21,8 +21,14 @@ class PortfoliosController < ApplicationController
                #  this uses the custom scope defined in portfolio.rb
          #  @portfolio_items = Portfolio.angular   
                #  this uses the custom scope defined in portfolio.rb
-      
     end  
+    
+    def sort
+       params[:order].each do |key, value|
+         Portfolio.find(value[:id]).update(position: value[:position])   
+       end
+       render nothing: true
+    end
     
     def angular
       @angular_portfolio_items   = Portfolio.angular   #  list of angular portfolio items 
