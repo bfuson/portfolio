@@ -89,7 +89,6 @@ gem 'devcamp_view_tool', git: 'https://github.com/bfuson/devcamp_view_tool'
   #  spec to only use the specified version with =0.1.0
    
 gem 'petergate', '~> 2.0', '>= 2.0.1'
-
 gem 'font-awesome-rails'
-
 gem 'kaminari', '~> 1.2'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
