@@ -92,3 +92,8 @@ gem 'petergate', '~> 2.0', '>= 2.0.1'
 gem 'font-awesome-rails'
 gem 'kaminari', '~> 1.2'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'carrierwave', '~> 2.1.0'
+gem 'mini_magick', '~> 4.10.1'
+gem 'carrierwave-aws', '~> 1.5.0'
+gem 'dotenv-rails', '~>2.7.5'
+
