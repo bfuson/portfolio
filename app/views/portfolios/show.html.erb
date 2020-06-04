@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container portfolio-container">
 		<!-- use the container class to define a display area -->
 	<div class="row">
 			<!-- break display page into two columns -->
 		<div class="col-md-7">
-			<p><%= image_tag @portfolio_item.main_image, width: '100%' %></p>
-		</div>
+			<p><%= image_tag portfolio_img(@portfolio_item.thumb_image, 'main'), width: '100%' %></p>
+		</div> 
 		
 		<div class="col-md-5">  
 			<!-- remember that within the row, the col-md values must add to 12 when using Bootstrap grids -->
@@ -20,4 +20,4 @@
 			<% end %>		
 		</div>
 	</div>
-</div> 
+</div>  
